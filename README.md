@@ -5,7 +5,7 @@
   </p>
 
   <p>
-    <a href="https://engyahia25.github.io/portfolio/"><b>View Live Demo</b></a> •
+    <a href="https://yahia-io.netlify.app/"><b>View Live Demo</b></a> •
     <a href="#features"><b>Features</b></a> •
     <a href="#tech-stack"><b>Tech Stack</b></a> •
     <a href="#installation"><b>Installation</b></a>
