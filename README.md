@@ -1,6 +1,4 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/EngYahia25/portfolio/main/assets/header-logo.png" alt="Yahia Mohamed Seddik | AI Engineer Portfolio" width="100%" />
-
   <h1>🚀 Yahia Mohamed Seddik | AI Engineer Portfolio</h1>
   <p>
     <strong>A World-Class, High-Performance, Interactive Engineering Portfolio.</strong>
@@ -25,97 +23,61 @@
 
 ## 🧠 Overview
 
-Welcome to the source code of my personal flagship portfolio! 
+Welcome to the official repository for my flagship engineering portfolio.
 
-As an **AI Engineering Student** deeply passionate about **Machine Learning, Computer Vision, Embedded Systems, and Full-Stack Development**, I built this portfolio not just as a resume, but as an engineering project itself.
-
-The goal was to create an award-worthy, premium experience with a futuristic dark theme, glassmorphism UI, advanced micro-interactions, and live GitHub API integration, optimized for maximum performance and recruiter impact.
+As an **AI & Embedded Systems Engineer**, I designed this site to showcase technical excellence through:
+*   **Futuristic Design**: A premium glassmorphism UI with high-impact micro-interactions.
+*   **Real-Time Data**: Live integration with the GitHub API for dynamic repository analytics.
+*   **Performance Engineering**: A lightweight, vanilla architecture for sub-second load times.
 
 ---
 
 ## ✨ Features
 
-- **Elite UI/UX Design**: Futuristic dark theme, dynamic gradients, and glassmorphism styling.
-- **Advanced Animations**: Powered by AOS (Animate on Scroll), Vanilla-tilt.js, and typed.js.
-- **Particle Engine Background**: Interactive constellation background using tsParticles.
-- **Live GitHub Analytics**: Real-time fetching of GitHub repositories, followers, and stars via the GitHub REST API.
-- **100% Responsive**: Mobile-first grid layouts scaling up flawlessly to 4K displays.
-- **Semantic HTML5 & Accessible**: ARIA labels, semantic tagging, and keyboard-friendly navigation.
-- **SEO Optimized**: Fully equipped with Open Graph tags, Twitter Cards, structured data (JSON-LD), and canonical links.
-- **Performance Focused**: Minimal layout shifts, optimized assets, and clean vanilla JS resulting in high Lighthouse scores.
+- **Elite UI/UX**: Dark-themed glassmorphism with dynamic star particle backgrounds.
+- **Micro-Interactions**: AOS (Scroll Reveal), 3D Card Tilt effects, and interactive terminal typing.
+- **GitHub Live Analytics**: Asynchronously fetches repos, stars, and followers to build trust.
+- **SEO & Social Impact**: Full Open Graph support, JSON-LD Schema, and Twitter Card optimization.
+- **Recruiter Optimized**: Clear project hierarchy, technical tags, and professional timeline.
+- **Mobile Perfection**: 100% responsive grid system scaling from mobile to 4K displays.
 
 ---
 
 ## 🛠️ Tech Stack
 
-This project is built using modern web standards to ensure blazing fast performance without relying on heavy frameworks for the frontend view layer.
-
+Built with a focus on speed and sustainability:
 - **Structure**: Semantic HTML5
-- **Styling**: Vanilla CSS3 (Custom Variables, Flexbox, CSS Grid, Glassmorphism)
-- **Logic**: Vanilla JavaScript (ES6+, Async/Await, DOM Manipulation)
-- **APIs**: GitHub REST API
-- **Libraries**:
-  - [AOS](https://michalsnik.github.io/aos/) (Scroll Reveal)
-  - [Typed.js](https://github.com/mattboldt/typed.js/) (Typing Effect)
-  - [Vanilla-Tilt.js](https://micku7zu.github.io/vanilla-tilt.js/) (3D Card Tilt)
-  - [tsParticles](https://particles.js.org/) (Interactive Background)
-  - [Font Awesome 6](https://fontawesome.com/) (Icons)
+- **Styling**: Modern CSS3 (Variables, Flexbox, Grid, Glassmorphism)
+- **Interactions**: Vanilla JavaScript (ES6+, Async API Fetching)
+- **Deployment**: Configured for Netlify/GitHub Pages with `netlify.toml` security headers.
+- **Libraries**: AOS, Typed.js, Vanilla-Tilt.js, tsParticles.
 
 ---
 
-## 🚀 Installation & Local Development
+## 🚀 Installation & Setup
 
-Want to run this portfolio locally or use it as a base for your own?
-
-1. **Clone the repository:**
+1. **Clone & Enter**:
    ```bash
    git clone https://github.com/EngYahia25/portfolio.git
-   ```
-
-2. **Navigate to the directory:**
-   ```bash
    cd portfolio
    ```
 
-3. **Run a local server:**
-   You can use any live server. If you have Python installed:
-   ```bash
-   # Python 3
-   python -m http.server 8000
-   ```
-   Or using Node's `serve`:
-   ```bash
-   npx serve .
-   ```
-
-4. **Open in your browser:**
-   Navigate to `http://localhost:8000`.
+2. **Run Locally**:
+   Using Python: `python -m http.server 8000`
+   Using Node: `npx serve .`
 
 ---
 
 ## 🌐 Deployment
 
-This repository is configured to be instantly deployable to all major static hosting providers.
-
-### GitHub Pages (Recommended)
-Simply go to repository **Settings** -> **Pages** -> Select **main branch** as the source.
-
-### Vercel / Netlify
-The repository contains a `netlify.toml` file for automatic deployment configuration on Netlify. You can import this repository directly into Vercel or Netlify dashboards without any build commands required.
-
----
-
-## 📈 Performance & SEO
-
-- **Lighthouse Score Targeting:** 95+ across Performance, Accessibility, Best Practices, and SEO.
-- Includes `robots.txt` and `sitemap.xml` for optimal search engine crawling.
+- **GitHub Pages**: Automatically deployed via the `main` branch.
+- **Netlify**: Integrated configuration for zero-touch deployment.
 
 ---
 
 ## 📄 License
 
-This project is open-source and available under the [MIT License](LICENSE). 
-*Note: If you decide to fork and use this template, please ensure you update all personal information, links, and API usernames to your own.*
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
@@ -124,6 +86,6 @@ This project is open-source and available under the [MIT License](LICENSE).
   <p>
     <a href="https://www.linkedin.com/in/yehia-mohamed-seddik">LinkedIn</a> • 
     <a href="https://github.com/EngYahia25">GitHub</a> • 
-    <a href="mailto:yehia25ms@gmail.com">Email</a>
+    <a href="mailto:eng.yahiaMohamed5@gmail.com">Email</a>
   </p>
 </div>
