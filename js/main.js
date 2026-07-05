@@ -93,66 +93,76 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 4. tsParticles Initialization ---
     if (typeof tsParticles !== 'undefined') {
-        tsParticles.load("tsparticles", {
-            preset: "stars",
-            background: {
-                color: {
-                    value: "transparent",
-                },
-            },
-            particles: {
-                number: {
-                    value: 100,
-                },
-                color: {
-                    value: ["#00f2ff", "#7000ff", "#ffffff"],
-                },
-                opacity: {
-                    value: 0.5,
-                    animation: {
-                        enable: true,
-                        speed: 1,
-                        minimumValue: 0.1,
-                    }
-                },
-                size: {
-                    value: 2,
-                    random: true,
-                },
-                links: {
-                    enable: true,
-                    distance: 150,
-                    color: "rgba(255,255,255,0.1)",
-                    opacity: 0.2,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 0.5,
-                    direction: "none",
-                    outModes: {
-                        default: "out",
+        (async () => {
+            try {
+                // Register the stars preset before loading (required in tsParticles v2)
+                if (typeof loadStarsPreset === 'function') {
+                    await loadStarsPreset(tsParticles);
+                }
+                await tsParticles.load("tsparticles", {
+                    preset: "stars",
+                    background: {
+                        color: {
+                            value: "transparent",
+                        },
                     },
-                },
-            },
-            interactivity: {
-                events: {
-                    onHover: {
-                        enable: true,
-                        mode: "grab",
-                    },
-                },
-                modes: {
-                    grab: {
-                        distance: 140,
+                    particles: {
+                        number: {
+                            value: 100,
+                        },
+                        color: {
+                            value: ["#00f2ff", "#7000ff", "#ffffff"],
+                        },
+                        opacity: {
+                            value: 0.5,
+                            animation: {
+                                enable: true,
+                                speed: 1,
+                                minimumValue: 0.1,
+                            }
+                        },
+                        size: {
+                            value: 2,
+                            random: true,
+                        },
                         links: {
-                            opacity: 0.5,
-                            color: "#00f2ff"
-                        }
+                            enable: true,
+                            distance: 150,
+                            color: "rgba(255,255,255,0.1)",
+                            opacity: 0.2,
+                            width: 1
+                        },
+                        move: {
+                            enable: true,
+                            speed: 0.5,
+                            direction: "none",
+                            outModes: {
+                                default: "out",
+                            },
+                        },
                     },
-                },
-            },
-        });
+                    interactivity: {
+                        events: {
+                            onHover: {
+                                enable: true,
+                                mode: "grab",
+                            },
+                        },
+                        modes: {
+                            grab: {
+                                distance: 140,
+                                links: {
+                                    opacity: 0.5,
+                                    color: "#00f2ff"
+                                }
+                            },
+                        },
+                    },
+                });
+            } catch (err) {
+                console.warn('tsParticles failed to initialize:', err);
+            }
+        })();
     }
 
     // --- 5. Navigation Logic ---
