@@ -162,8 +162,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('section, header');
     const navItems = document.querySelectorAll('.nav-links a');
 
-    // Sticky Navbar
-    window.addEventListener('scroll', () => {
+    // Sticky Navbar & Active Link Highlighting
+    const checkNavbarAndLinks = () => {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
         } else {
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
-            if (scrollY >= (sectionTop - sectionHeight / 3)) {
+            if (window.scrollY >= (sectionTop - sectionHeight / 3)) {
                 current = section.getAttribute('id');
             }
         });
@@ -186,7 +186,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 item.classList.add('active');
             }
         });
-    });
+    };
+
+    window.addEventListener('scroll', checkNavbarAndLinks);
+    // Check once on load
+    checkNavbarAndLinks();
 
     // Mobile Menu Toggle
     if (hamburger && navLinks) {
@@ -230,27 +234,34 @@ document.addEventListener('DOMContentLoaded', () => {
     // Trigger counters when About section is in view
     const aboutSection = document.getElementById('about');
     if (aboutSection) {
-        window.addEventListener('scroll', () => {
+        const checkAboutScroll = () => {
             if (hasCounted) return;
             const sectionPos = aboutSection.getBoundingClientRect().top;
             const screenPos = window.innerHeight / 1.2;
             if (sectionPos < screenPos) {
                 runCounters();
                 hasCounted = true;
+                window.removeEventListener('scroll', checkAboutScroll);
             }
-        });
+        };
+        window.addEventListener('scroll', checkAboutScroll);
+        // Check once on load in case it's already in view
+        checkAboutScroll();
     }
 
     // --- 7. Back to Top Button ---
     const backToTopBtn = document.getElementById('back-to-top');
     if (backToTopBtn) {
-        window.addEventListener('scroll', () => {
+        const checkBackToTopScroll = () => {
             if (window.scrollY > 500) {
                 backToTopBtn.classList.add('visible');
             } else {
                 backToTopBtn.classList.remove('visible');
             }
-        });
+        };
+        window.addEventListener('scroll', checkBackToTopScroll);
+        // Check once on load
+        checkBackToTopScroll();
 
         backToTopBtn.addEventListener('click', () => {
             window.scrollTo({
@@ -332,5 +343,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.style.opacity = '1';
             }, 3000);
         });
+    }
+
+    // --- 10. Dynamic Year ---
+    const yearEl = document.getElementById('year');
+    if (yearEl) {
+        yearEl.innerText = new Date().getFullYear();
     }
 });
