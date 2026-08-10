@@ -286,6 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const reposEl = document.getElementById('gh-repos');
     const starsEl = document.getElementById('gh-stars');
     const followersEl = document.getElementById('gh-followers');
+    const topLangsEl = document.getElementById('gh-top-langs');
 
     async function fetchGitHubStats() {
         try {
@@ -296,22 +297,65 @@ document.addEventListener('DOMContentLoaded', () => {
             if (followersEl) followersEl.innerText = userData.followers;
             if (reposEl) reposEl.innerText = userData.public_repos;
 
-            // To get total stars, we need to fetch repos
-            // Since we can only fetch 100 per page, for a portfolio it's usually enough
+            // Fetch public repositories to compute total stars & top languages breakdown
             const reposRes = await fetch(`https://api.github.com/users/${ghUsername}/repos?per_page=100`);
             if (reposRes.ok) {
                 const reposData = await reposRes.json();
-                const totalStars = reposData.reduce((acc, repo) => acc + repo.stargazers_count, 0);
+                const totalStars = reposData.reduce((acc, repo) => acc + (repo.stargazers_count || 0), 0);
                 if (starsEl) starsEl.innerText = totalStars;
+
+                // Process Top Languages
+                const langCounts = {};
+                let totalWithLang = 0;
+                reposData.forEach(repo => {
+                    if (repo.language) {
+                        langCounts[repo.language] = (langCounts[repo.language] || 0) + 1;
+                        totalWithLang++;
+                    }
+                });
+
+                if (topLangsEl && totalWithLang > 0) {
+                    const sortedLangs = Object.entries(langCounts)
+                        .sort((a, b) => b[1] - a[1])
+                        .slice(0, 5);
+
+                    const colorMap = {
+                        Python: '#3572A5',
+                        JavaScript: '#f1e05a',
+                        Prolog: '#74283c',
+                        'C++': '#f34b7d',
+                        HTML: '#e34c26',
+                        CSS: '#563d7c',
+                        TypeScript: '#3178c6',
+                        Dart: '#00B4AB',
+                        Jupyter: '#DA5B0B'
+                    };
+
+                    topLangsEl.innerHTML = sortedLangs.map(([lang, count]) => {
+                        const pct = Math.round((count / totalWithLang) * 100);
+                        const color = colorMap[lang] || '#00f2ff';
+                        return `
+                            <div class="lang-item">
+                                <div class="lang-info">
+                                    <span class="lang-name"><span class="lang-dot" style="background: ${color}"></span> ${lang}</span>
+                                    <span class="lang-percent">${pct}%</span>
+                                </div>
+                                <div class="lang-bar-bg">
+                                    <div class="lang-bar-fill" style="width: ${pct}%; background: ${color}"></div>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                }
             } else {
                 if (starsEl) starsEl.innerText = '-';
             }
             
         } catch (error) {
             console.error('GitHub API Error:', error);
-            if (followersEl) followersEl.innerText = 'Err';
-            if (reposEl) reposEl.innerText = 'Err';
-            if (starsEl) starsEl.innerText = 'Err';
+            if (followersEl) followersEl.innerText = '0';
+            if (reposEl) reposEl.innerText = '0';
+            if (starsEl) starsEl.innerText = '0';
         }
     }
 
