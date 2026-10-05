@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,8 +42,17 @@
     <!-- AOS CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
+    <!-- Anti-FAWT: apply saved theme before first paint -->
+    <script>
+        (function() {
+            var t = localStorage.getItem('portfolio-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', t);
+        })();
+    </script>
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -93,11 +102,19 @@
                 <li role="none"><a role="menuitem" href="#contact" class="btn-primary">Hire Me</a></li>
             </ul>
 
-            <button id="hamburger" class="hamburger" aria-label="Toggle Navigation">
-                <div class="hamburger-line top-line"></div>
-                <div class="hamburger-line middle-line"></div>
-                <div class="hamburger-line bottom-line"></div>
-            </button>
+            <div class="nav-controls">
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+                    <i class="fas fa-moon icon-moon"></i>
+                    <i class="fas fa-sun icon-sun"></i>
+                </button>
+
+                <button id="hamburger" class="hamburger" aria-label="Toggle Navigation">
+                    <div class="hamburger-line top-line"></div>
+                    <div class="hamburger-line middle-line"></div>
+                    <div class="hamburger-line bottom-line"></div>
+                </button>
+            </div>
         </div>
     </nav>
 

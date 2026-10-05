@@ -5,7 +5,25 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     
+    // --- 0. Dark / Light Mode Toggle ---
+    const htmlEl = document.documentElement;
+    const themeBtn = document.getElementById('theme-toggle');
+
+    // Load persisted preference; default to 'light'
+    const savedTheme = localStorage.getItem('portfolio-theme') || 'light';
+    htmlEl.setAttribute('data-theme', savedTheme);
+
+    if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+            const current = htmlEl.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            htmlEl.setAttribute('data-theme', next);
+            localStorage.setItem('portfolio-theme', next);
+        });
+    }
+
     // --- 1. Custom Cursor ---
+
     const cursorDot = document.getElementById('cursor-dot');
     const cursorOutline = document.getElementById('cursor-outline');
 
